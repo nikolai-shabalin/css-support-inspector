@@ -1,0 +1,271 @@
+:root {
+  --bg: #f5f2ea;
+  --card: #fffdf7;
+  --ink: #1f2a2f;
+  --muted: #4f5f66;
+  --border: #d7cec3;
+  --accent: #007f73;
+  --danger: #b00020;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at 0% 0%, #fff5da 0, transparent 35%),
+    radial-gradient(circle at 100% 100%, #d6f6f3 0, transparent 40%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+main {
+  padding: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  min-height: calc(100vh - 2.5rem);
+}
+
+.pane {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--card) 85%, white 15%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pane-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.pane-header p {
+  color: var(--muted);
+}
+
+.editor-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.85rem 1rem 0.6rem;
+}
+
+.editor-label {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.clear-button {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+.clear-button:hover {
+  border-color: var(--accent);
+}
+
+.editor-input-wrap {
+  margin: 0 1rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  height: 90vh;
+  max-height: 90vh;
+  min-height: 420px;
+}
+
+.editor {
+  height: 100%;
+}
+
+.result-pane {
+  gap: 1rem;
+}
+
+.browser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 0 1rem;
+}
+
+.browser-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.85rem;
+  background: white;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.browser-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.icon {
+  inline-size: 1.8rem;
+  block-size: 1.8rem;
+  display: inline-block;
+  color: currentColor;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.browser-card[data-browser='chrome'] .icon {
+  color: #4285f4;
+}
+
+.browser-card[data-browser='firefox'] .icon {
+  color: #ff7139;
+}
+
+.browser-card[data-browser='safari'] .icon {
+  color: #0fb5ee;
+}
+
+.version {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.version.unavailable {
+  color: var(--danger);
+}
+
+.latest {
+  margin-top: -0.45rem;
+  color: #374151;
+  font-size: 0.86rem;
+}
+
+.reason {
+  margin-top: -0.25rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.features-block {
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  padding: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+#feature-list {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.3rem;
+  color: var(--muted);
+  max-height: 32vh;
+  overflow: auto;
+}
+
+#status.error {
+  color: var(--danger);
+}
+
+.cm-editor {
+  height: 100%;
+  background: #fffefb;
+}
+
+.cm-focused {
+  outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: -2px;
+}
+
+.cm-scroller {
+  font-family: 'JetBrains Mono', Menlo, Monaco, monospace;
+  overflow: auto;
+}
+
+.cm-content {
+  color: #1f2937;
+}
+
+.cm-line .tok-comment,
+.cm-line .cm-comment {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.cm-line .tok-keyword,
+.cm-line .cm-keyword,
+.cm-line .tok-operator,
+.cm-line .cm-operator {
+  color: #7c3aed;
+}
+
+.cm-line .tok-propertyName,
+.cm-line .cm-propertyName {
+  color: #0f766e;
+}
+
+.cm-line .tok-string,
+.cm-line .cm-string,
+.cm-line .tok-atom,
+.cm-line .cm-atom {
+  color: #b45309;
+}
+
+.cm-line .tok-number,
+.cm-line .cm-number {
+  color: #2563eb;
+}
+
+.cm-line .tok-className,
+.cm-line .cm-className,
+.cm-line .tok-typeName,
+.cm-line .cm-typeName,
+.cm-line .cm-tag {
+  color: #1d4ed8;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .editor {
+    min-height: 360px;
+  }
+
+  .browser-grid {
+    grid-template-columns: 1fr;
+  }
+}

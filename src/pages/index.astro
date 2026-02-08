@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { faChrome, faFirefoxBrowser, faSafari } from '@fortawesome/free-brands-svg-icons';
+
+const chromeIcon = icon(faChrome).html.join('');
+const firefoxIcon = icon(faFirefoxBrowser).html.join('');
+const safariIcon = icon(faSafari).html.join('');
+---
+
+<Layout title="CSS Browser Support Analyzer">
+  <section class="app-shell">
+    <div class="pane editor-pane">
+      <div class="pane-header">
+        <h1>Browser Support Analyzer</h1>
+      </div>
+      <div class="editor-controls">
+        <p class="editor-label">Поле для CSS-кода (вставка: Ctrl/Cmd + V)</p>
+        <button id="clear-editor" type="button" class="clear-button">Очистить</button>
+      </div>
+      <div class="editor-input-wrap">
+        <div id="editor" class="editor" aria-label="CSS input editor"></div>
+      </div>
+    </div>
+
+    <div class="pane result-pane">
+      <div class="pane-header">
+        <h2>Минимальные версии браузеров</h2>
+        <p id="status">Введите CSS-код для анализа</p>
+      </div>
+
+      <div class="browser-grid">
+        <article class="browser-card" data-browser="chrome">
+          <div class="browser-meta">
+            <span class="icon icon-chrome" aria-hidden="true" set:html={chromeIcon}></span>
+            <h3>Google Chrome</h3>
+          </div>
+          <p class="version" id="version-chrome">-</p>
+          <p class="latest" id="latest-chrome">Актуальная: -</p>
+          <p class="reason" id="reason-chrome">Причина появится после анализа</p>
+        </article>
+
+        <article class="browser-card" data-browser="firefox">
+          <div class="browser-meta">
+            <span class="icon icon-firefox" aria-hidden="true" set:html={firefoxIcon}></span>
+            <h3>Mozilla Firefox</h3>
+          </div>
+          <p class="version" id="version-firefox">-</p>
+          <p class="latest" id="latest-firefox">Актуальная: -</p>
+          <p class="reason" id="reason-firefox">Причина появится после анализа</p>
+        </article>
+
+        <article class="browser-card" data-browser="safari">
+          <div class="browser-meta">
+            <span class="icon icon-safari" aria-hidden="true" set:html={safariIcon}></span>
+            <h3>Apple Safari</h3>
+          </div>
+          <p class="version" id="version-safari">-</p>
+          <p class="latest" id="latest-safari">Актуальная: -</p>
+          <p class="reason" id="reason-safari">Причина появится после анализа</p>
+        </article>
+      </div>
+
+      <div class="features-block">
+        <h4>Найденные CSS-фичи</h4>
+        <ul id="feature-list"></ul>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { mountSupportAnalyzer } from '../scripts/app';
+
+  mountSupportAnalyzer();
+</script>

@@ -1,0 +1,25 @@
+{
+  "name": "is-widely-available",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.38.2",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@mdn/browser-compat-data": "^6.0.16",
+    "astro": "^5.2.0",
+    "css-tree": "^3.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
